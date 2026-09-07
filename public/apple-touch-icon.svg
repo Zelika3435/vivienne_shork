@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Vivienne Shork">
+  <rect width="180" height="180" rx="40" fill="#F3E6D4"/>
+  <ellipse cx="90" cy="102" rx="52" ry="44" fill="#C4B5A8"/>
+  <path d="M90 58c0-18 13-36 18-40 2.6 9 4.4 22-2.4 40" fill="#C4B5A8"/>
+  <ellipse cx="90" cy="102" rx="52" ry="44" fill="none" stroke="#7A7468" stroke-width="3.2"/>
+  <path d="M90 58c0-18 13-36 18-40 2.6 9 4.4 22-2.4 40" fill="none" stroke="#7A7468" stroke-width="3.2" stroke-linecap="round"/>
+  <circle cx="72" cy="106" r="9" fill="#F4C7C2"/>
+  <circle cx="108" cy="106" r="9" fill="#F4C7C2"/>
+  <path d="M74 90c3.6 3.2 7.6 3.2 11.2 0" fill="none" stroke="#3D332C" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M95 90c3.6 3.2 7.6 3.2 11.2 0" fill="none" stroke="#3D332C" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M81 122c5.4 6 13.6 6 19 0" fill="none" stroke="#3D332C" stroke-width="3.4" stroke-linecap="round"/>
+</svg>
