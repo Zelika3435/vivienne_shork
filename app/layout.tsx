@@ -1,10 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Caveat, Fraunces, Lora, Nunito, Geist } from "next/font/google";
+import { Caveat, Fraunces, Lora, Nunito } from "next/font/google";
 import { PicnicShell } from "@/components/reader/PicnicShell";
+import { privateOpenGraph, privateRobots } from "@/lib/privacy";
 import "./globals.css";
-import { cn } from "@/lib/utils";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -39,14 +37,12 @@ const caveat = Caveat({
 export const metadata: Metadata = {
   title: "Vivienne Shork",
   description: "A private picnic of letters.",
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-    googleBot: {
-      index: false,
-      follow: false,
-    },
+  robots: privateRobots,
+  openGraph: privateOpenGraph,
+  twitter: {
+    card: "summary",
+    title: privateOpenGraph.title,
+    description: privateOpenGraph.description,
   },
   icons: {
     icon: "/favicon.svg",
@@ -67,7 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", nunito.variable, fraunces.variable, lora.variable, caveat.variable, "font-sans", geist.variable)}
+      className={`${nunito.variable} ${fraunces.variable} ${lora.variable} ${caveat.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-linen font-sans text-ink">
         <PicnicShell>{children}</PicnicShell>

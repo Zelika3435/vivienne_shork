@@ -1,13 +1,21 @@
+import type { Metadata } from "next";
 import { PromptCard } from "@/components/reader/PromptCard";
+import { SoftEmpty } from "@/components/reader/SoftEmpty";
 import { Wordmark } from "@/components/reader/Wordmark";
+import { requireReaderAccess } from "@/lib/gate-session";
+import { listPublishedLetters } from "@/lib/letters";
+import { privateRobots } from "@/lib/privacy";
 
-const PLACEHOLDER_CARDS = [
-  { label: "Read this when you are tired", stickerIndex: 0 },
-  { label: "Read this when you miss me", stickerIndex: 3 },
-  { label: "Read this when you need a break", stickerIndex: 1 },
-] as const;
+export const dynamic = "force-dynamic";
 
-export default function HomePage() {
+export const metadata: Metadata = {
+  robots: privateRobots,
+};
+
+export default async function HomePage() {
+  await requireReaderAccess();
+  const letters = await listPublishedLetters();
+
   return (
     <main className="picnic-enter mx-auto max-w-[42rem] md:max-w-[1080px]">
       <header className="mb-8 md:mb-10">
@@ -18,19 +26,28 @@ export default function HomePage() {
         <p className="mt-2 font-accent text-[1.35rem] leading-snug text-ink-soft">
           Pick what you need.
         </p>
+        {letters.length > 0 ? (
+          <p className="mt-6 font-accent text-[1.35rem] leading-none text-ink-soft md:mt-8">
+            Read this when…
+          </p>
+        ) : null}
       </header>
 
-      <ul className="grid grid-cols-1 gap-3.5 md:grid-cols-2 md:gap-4">
-        {PLACEHOLDER_CARDS.map((card) => (
-          <li key={card.label}>
-            <PromptCard
-              label={card.label}
-              href="#"
-              stickerIndex={card.stickerIndex}
-            />
-          </li>
-        ))}
-      </ul>
+      {letters.length === 0 ? (
+        <SoftEmpty />
+      ) : (
+        <ul className="grid list-none grid-cols-1 gap-3.5 p-0 md:grid-cols-2 md:gap-4">
+          {letters.map((letter) => (
+            <li key={letter.id}>
+              <PromptCard
+                label={letter.label}
+                href={`/letters/${letter.slug}`}
+                stickerIndex={letter.sort_order % 6}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   );
 }
