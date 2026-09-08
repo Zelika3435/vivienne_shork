@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   ...privatePageMetadata,
-  title: "New letter · Vivienne Shork",
+  title: "New letter · From Akhi Tortol",
 };
 
 export default async function NewLetterPage() {

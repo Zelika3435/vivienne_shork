@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   ...privatePageMetadata,
-  title: "Vivienne Shork",
+  title: "From Akhi Tortol",
 };
 
 export default async function EnterPage() {

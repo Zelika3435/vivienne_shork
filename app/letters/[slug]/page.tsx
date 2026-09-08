@@ -28,7 +28,7 @@ export async function generateMetadata({
 
   return {
     ...privatePageMetadata,
-    title: `${letter.label} · Vivienne Shork`,
+    title: `${letter.label} · From Akhi Tortol`,
   };
 }
 
@@ -50,9 +50,6 @@ export default async function LetterPage({ params }: LetterPageProps) {
           body={letter.body}
           writtenAt={letter.written_at}
         />
-      </div>
-      <div className="mt-8">
-        <BackLink />
       </div>
     </main>
   );

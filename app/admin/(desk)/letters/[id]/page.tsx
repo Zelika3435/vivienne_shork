@@ -20,7 +20,7 @@ export async function generateMetadata({
     ...privatePageMetadata,
     title: letter
       ? `${letter.label} · Desk`
-      : "Letter · Vivienne Shork",
+      : "Letter · From Akhi Tortol",
   };
 }
 

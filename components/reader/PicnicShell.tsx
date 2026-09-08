@@ -38,11 +38,11 @@ function EdgeDoodles() {
     >
       <FlowerDoodle
         kind="daisy"
-        className="absolute -left-3 top-20 size-16 opacity-70 md:left-3 md:top-24 md:size-20"
+        className="absolute -left-10 top-1 size-16 opacity-45 md:-left-6 md:top-2 md:size-[4.5rem] xl:left-1 xl:top-4"
       />
       <FlowerDoodle
         kind="blush"
-        className="absolute -right-4 top-36 size-12 opacity-55 md:right-8 md:top-28 md:size-14"
+        className="absolute -right-6 top-8 size-12 opacity-40 md:-right-2 md:top-6 md:size-14 xl:right-6"
       />
       <FlowerDoodle
         kind="leaf"

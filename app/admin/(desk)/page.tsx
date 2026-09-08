@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   ...privatePageMetadata,
-  title: "Letters · Vivienne Shork",
+  title: "Letters · From Akhi Tortol",
 };
 
 type AdminPageProps = {

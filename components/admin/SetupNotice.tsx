@@ -10,7 +10,7 @@ export function SetupNotice({ error }: SetupNoticeProps) {
         <li>Open the same Supabase project as your URL in .env</li>
         <li>SQL Editor → New query</li>
         <li>Paste the contents of supabase/setup.sql and Run</li>
-        <li>Table Editor should show public.letters (15 unpublished rows)</li>
+        <li>Table Editor should show public.letters</li>
         <li>Reload this page</li>
       </ol>
     </section>

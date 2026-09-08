@@ -12,12 +12,12 @@ export const privateRobots: Metadata["robots"] = {
 };
 
 export const privateOpenGraph = {
-  title: "Vivienne Shork",
+  title: "From Akhi Tortol",
   description: "A private picnic of letters.",
 } as const;
 
 export const privatePageMetadata = {
-  title: "Vivienne Shork",
+  title: "From Akhi Tortol",
   description: "A private picnic of letters.",
   robots: privateRobots,
   openGraph: privateOpenGraph,

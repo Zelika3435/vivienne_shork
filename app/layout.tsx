@@ -35,7 +35,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Vivienne Shork",
+  title: "From Akhi Tortol",
   description: "A private picnic of letters.",
   robots: privateRobots,
   openGraph: privateOpenGraph,

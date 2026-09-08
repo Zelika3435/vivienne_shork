@@ -3,7 +3,7 @@ import { privatePageMetadata } from "@/lib/privacy";
 
 export const metadata: Metadata = {
   ...privatePageMetadata,
-  title: "Desk · Vivienne Shork",
+  title: "Desk · From Akhi Tortol",
 };
 
 export default function AdminRootLayout({

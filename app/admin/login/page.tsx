@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   ...privatePageMetadata,
-  title: "Log in · Vivienne Shork",
+  title: "Log in · From Akhi Tortol",
 };
 
 export default async function AdminLoginPage() {
