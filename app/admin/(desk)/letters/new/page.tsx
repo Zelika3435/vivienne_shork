@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AdminBackLink } from "@/components/admin/AdminBackLink";
 import { LetterForm } from "@/components/admin/LetterForm";
 import { SetupNotice } from "@/components/admin/SetupNotice";
-import { getNextSortOrder, probeLettersTable } from "@/lib/letters";
+import { getNextSortOrder, getPinnedCount, probeLettersTable } from "@/lib/letters";
 import { privatePageMetadata } from "@/lib/privacy";
 
 export const dynamic = "force-dynamic";
@@ -28,6 +28,7 @@ export default async function NewLetterPage() {
   }
 
   const defaultSortOrder = await getNextSortOrder();
+  const otherPinnedCount = await getPinnedCount();
 
   return (
     <main className="flex flex-col gap-5">
@@ -38,7 +39,11 @@ export default async function NewLetterPage() {
           Write it first. Publish when it’s ready.
         </p>
       </div>
-      <LetterForm mode="create" defaultSortOrder={defaultSortOrder} />
+      <LetterForm
+        mode="create"
+        defaultSortOrder={defaultSortOrder}
+        otherPinnedCount={otherPinnedCount}
+      />
     </main>
   );
 }

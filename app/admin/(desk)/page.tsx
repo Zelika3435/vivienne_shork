@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Star } from "lucide-react";
 import { SetupNotice } from "@/components/admin/SetupNotice";
 import { listAllLetters, probeLettersTable } from "@/lib/letters";
 import { privatePageMetadata } from "@/lib/privacy";
@@ -77,7 +78,13 @@ export default async function AdminLettersPage({ searchParams }: AdminPageProps)
                 className="flex min-h-14 flex-col gap-1 rounded-2xl border border-wicker bg-paper px-4 py-3 no-underline transition-colors hover:bg-cream md:flex-row md:items-center md:justify-between md:gap-4"
               >
                 <div className="min-w-0">
-                  <p className="font-sans text-base font-semibold text-ink">
+                  <p className="flex items-center gap-1.5 font-sans text-base font-semibold text-ink">
+                    {letter.pinned ? (
+                      <Star
+                        className="size-4 shrink-0 fill-daisy text-sage"
+                        aria-label="Pinned"
+                      />
+                    ) : null}
                     {letter.label}
                   </p>
                   <p className="font-sans text-sm text-ink-soft">

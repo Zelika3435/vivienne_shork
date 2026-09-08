@@ -21,6 +21,7 @@ import {
   slugifyLabel,
   type LetterFormValues,
 } from "@/lib/letter-form";
+import { MAX_PINS } from "@/lib/letter-order";
 
 const fieldClass =
   "min-h-11 rounded-2xl border-wicker bg-kraft px-4 text-base text-ink";
@@ -29,12 +30,14 @@ type LetterFormProps =
   | {
       mode: "create";
       defaultSortOrder: number;
+      otherPinnedCount: number;
     }
   | {
       mode: "edit";
       id: string;
       slug: string;
       defaults: LetterFormValues;
+      otherPinnedCount: number;
     };
 
 export function LetterForm(props: LetterFormProps) {
@@ -53,6 +56,7 @@ export function LetterForm(props: LetterFormProps) {
           slug: "",
           body: "",
           published: false,
+          pinned: false,
           sort_order: props.defaultSortOrder,
           written_at: "",
         },
@@ -80,6 +84,9 @@ export function LetterForm(props: LetterFormProps) {
     data.set("written_at", values.written_at ?? "");
     if (values.published) {
       data.set("published", "on");
+    }
+    if (values.pinned) {
+      data.set("pinned", "on");
     }
 
     startTransition(async () => {
@@ -161,10 +168,16 @@ export function LetterForm(props: LetterFormProps) {
             <Input
               id="letter-sort"
               type="number"
+              min={1}
+              step={1}
               className={fieldClass}
               disabled={pending}
               {...form.register("sort_order", { valueAsNumber: true })}
             />
+            <p className="mt-1.5 font-sans text-sm text-ink-soft">
+              Among published letters. Drafts sit at the top. Other published
+              numbers shift to stay consecutive.
+            </p>
           </Field>
           <Field
             id="letter-written"
@@ -202,6 +215,44 @@ export function LetterForm(props: LetterFormProps) {
         {form.formState.errors.published?.message ? (
           <p className="font-sans text-sm font-semibold text-strawberry">
             {form.formState.errors.published.message}
+          </p>
+        ) : null}
+
+        <Controller
+          control={form.control}
+          name="pinned"
+          render={({ field }) => {
+            const alreadyPinned = isEdit && props.defaults.pinned;
+            const pinBlocked =
+              props.otherPinnedCount >= MAX_PINS && !alreadyPinned;
+            return (
+              <div className="flex flex-col gap-1.5">
+                <div className="flex min-h-11 items-center gap-3">
+                  <Checkbox
+                    id="letter-pinned"
+                    checked={field.value}
+                    disabled={pending || pinBlocked}
+                    onCheckedChange={(checked) =>
+                      field.onChange(checked === true)
+                    }
+                    className="size-5 rounded-md border-wicker"
+                  />
+                  <Label htmlFor="letter-pinned" className="text-base text-ink">
+                    Pin to the top
+                  </Label>
+                </div>
+                <p className="font-sans text-sm text-ink-soft">
+                  {pinBlocked
+                    ? "Two letters are already pinned. Unpin one first."
+                    : "Up to two letters stay at the top of the picnic, with a star."}
+                </p>
+              </div>
+            );
+          }}
+        />
+        {form.formState.errors.pinned?.message ? (
+          <p className="font-sans text-sm font-semibold text-strawberry">
+            {form.formState.errors.pinned.message}
           </p>
         ) : null}
 

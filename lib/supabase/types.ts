@@ -4,6 +4,7 @@ export type LetterRow = {
   label: string;
   body: string;
   published: boolean;
+  pinned: boolean;
   sort_order: number;
   written_at: string | null;
   created_at: string;
@@ -16,6 +17,7 @@ export type LetterInsert = {
   label: string;
   body?: string;
   published?: boolean;
+  pinned?: boolean;
   sort_order: number;
   written_at?: string | null;
   created_at?: string;
@@ -28,6 +30,7 @@ export type LetterUpdate = {
   label?: string;
   body?: string;
   published?: boolean;
+  pinned?: boolean;
   sort_order?: number;
   written_at?: string | null;
   created_at?: string;

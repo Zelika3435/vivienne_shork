@@ -63,6 +63,7 @@ export async function createLetterAction(
     slug: formData.get("slug"),
     body: formData.get("body") ?? "",
     published: formData.get("published") === "on",
+    pinned: formData.get("pinned") === "on",
     sort_order: Number(formData.get("sort_order")),
     written_at: String(formData.get("written_at") ?? ""),
   });
@@ -83,6 +84,7 @@ export async function createLetterAction(
       slug: values.slug,
       body: values.body,
       published: values.published,
+      pinned: values.pinned,
       sort_order: values.sort_order,
       written_at: emptyToNull(values.written_at),
     });
@@ -114,6 +116,7 @@ export async function updateLetterAction(
     slug: formData.get("slug"),
     body: formData.get("body") ?? "",
     published: formData.get("published") === "on",
+    pinned: formData.get("pinned") === "on",
     sort_order: Number(formData.get("sort_order")),
     written_at: String(formData.get("written_at") ?? ""),
   });
@@ -133,6 +136,7 @@ export async function updateLetterAction(
       slug: values.slug,
       body: values.body,
       published: values.published,
+      pinned: values.pinned,
       sort_order: values.sort_order,
       written_at: emptyToNull(values.written_at),
     });

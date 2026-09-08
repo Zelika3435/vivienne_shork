@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { AdminBackLink } from "@/components/admin/AdminBackLink";
 import { LetterForm } from "@/components/admin/LetterForm";
-import { getLetterById } from "@/lib/letters";
+import { getLetterById, getPinnedCount } from "@/lib/letters";
 import { privatePageMetadata } from "@/lib/privacy";
 
 export const dynamic = "force-dynamic";
@@ -50,11 +50,13 @@ export default async function EditLetterPage({ params }: EditLetterPageProps) {
         mode="edit"
         id={letter.id}
         slug={letter.slug}
+        otherPinnedCount={await getPinnedCount(letter.id)}
         defaults={{
           label: letter.label,
           slug: letter.slug,
           body: letter.body,
           published: letter.published,
+          pinned: letter.pinned ?? false,
           sort_order: letter.sort_order,
           written_at: letter.written_at ?? "",
         }}

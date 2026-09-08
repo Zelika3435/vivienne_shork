@@ -8,6 +8,7 @@ create table if not exists public.letters (
   label text unique not null,
   body text not null default '',
   published boolean not null default false,
+  pinned boolean not null default false,
   sort_order int not null,
   written_at date null,
   created_at timestamptz not null default now(),
@@ -32,4 +33,7 @@ create trigger letters_set_updated_at
 
 -- Lock the table until policies in rls.sql are applied.
 -- With RLS on and no policies, anon/authenticated see nothing.
+alter table public.letters
+  add column if not exists pinned boolean not null default false;
+
 alter table public.letters enable row level security;

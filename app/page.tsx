@@ -45,6 +45,7 @@ export default async function HomePage() {
                 label={letter.label}
                 href={`/letters/${letter.slug}`}
                 stickerIndex={letter.sort_order % 6}
+                pinned={letter.pinned}
               />
             </li>
           ))}

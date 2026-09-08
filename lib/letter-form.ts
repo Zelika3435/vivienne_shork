@@ -12,7 +12,11 @@ export const letterFormSchema = z.object({
     ),
   body: z.string(),
   published: z.boolean(),
-  sort_order: z.number().int("Sort order must be a whole number."),
+  pinned: z.boolean(),
+  sort_order: z
+    .number()
+    .int("Sort order must be a whole number.")
+    .min(1, "Sort order starts at 1."),
   written_at: z.string().optional(),
 });
 
